@@ -8,13 +8,21 @@ def mkdirs(d):
         os.makedirs(d)
 
 
-seq_root = '/data/yfzhang/MOT/JDE/MOT20/images/train'
-label_root = '/data/yfzhang/MOT/JDE/MOT20/labels_with_ids/train'
+seq_root = '/Users/andreasskibyandersen/Documents/Github/FairMOT/MOT20/images/train'
+label_root = '/Users/andreasskibyandersen/Documents/Github/FairMOT/MOT20/labels_with_ids/train'
 mkdirs(label_root)
 seqs = [s for s in os.listdir(seq_root)]
 
+
+# remove .DS_Store file
+#####################
+seqs.remove('.DS_Store')
+#####################
+
+
 tid_curr = 0
 tid_last = -1
+
 for seq in seqs:
     seq_info = open(osp.join(seq_root, seq, 'seqinfo.ini')).read()
     seq_width = int(seq_info[seq_info.find('imWidth=') + 8:seq_info.find('\nimHeight')])
