@@ -67,7 +67,7 @@ def write_results_score(filename, results, data_type):
     logger.info('save results to {}'.format(filename))
 
 
-def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_image=True, frame_rate=30, use_cuda=False):  ### use_cuda=True
+def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_image=True, frame_rate=30, use_cuda=True):
     if save_dir:
         mkdir_if_missing(save_dir)
     tracker = JDETracker(opt, frame_rate=frame_rate)
@@ -169,6 +169,12 @@ def main(opt, data_root='/data/MOT16/train', det_root=None, seqs=('MOT16-05',), 
 
 
 if __name__ == '__main__':
+    ###
+    if torch.cuda.is_available():
+        print("Device: cuda")
+    else:
+        print("Device: cpu")
+    ###
     os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     opt = opts().init()
 
