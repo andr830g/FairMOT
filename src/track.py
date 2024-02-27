@@ -68,6 +68,17 @@ def write_results_score(filename, results, data_type):
 
 
 def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_image=True, frame_rate=30, use_cuda=False): ### change from True to False
+    if opt.gpus[0] >= 0:
+        use_cuda = True
+        use_mps = False
+    elif opt.gpus[0] == -10:
+        use_mps = True
+        use_cuda = False
+        device = torch.device('mps') ## added
+    else:
+        use_mps = False
+        use_cuda = False
+
     if save_dir:
         mkdir_if_missing(save_dir)
     tracker = JDETracker(opt, frame_rate=frame_rate)
@@ -85,6 +96,8 @@ def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_im
         timer.tic()
         if use_cuda:
             blob = torch.from_numpy(img).cuda().unsqueeze(0)
+        elif use_mps:
+            blob = torch.from_numpy(img).to(device).unsqueeze(0) ### added
         else:
             blob = torch.from_numpy(img).unsqueeze(0)
         online_targets = tracker.update(blob, img0)
@@ -169,6 +182,11 @@ def main(opt, data_root='/data/MOT16/train', det_root=None, seqs=('MOT16-05',), 
 
 
 if __name__ == '__main__':
+    if not torch.backends.mps.is_available():
+        print('mps not available')
+    else:
+        print('mps available')
+    
     os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     opt = opts().init()
 

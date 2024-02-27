@@ -68,14 +68,20 @@ def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_im
     if save_dir:
         mkdir_if_missing(save_dir)
     if opt.gpus[0] >= 0:
-        opt.device = torch.device('cuda')
+        device = torch.device('cuda')
+        use_cuda = True
+        use_mps = False
+    elif opt.gpus[0] == -10:
+        device = torch.device('mps') ## added
+        use_mps = True
+        use_cuda = False
     else:
-        opt.device = torch.device('cpu')
+        device = torch.device('cpu')
     print('Creating model...')
     model = create_model(opt.arch, opt.heads, opt.head_conv)
     model = load_model(model, opt.load_model)
     # model = torch.nn.DataParallel(model)
-    model = model.to(opt.device)
+    model = model.to(device) ######## changed from opt.device
     model.eval()
     timer = Timer()
     results = []
@@ -85,7 +91,8 @@ def eval_seq(opt, dataloader, data_type, result_filename, save_dir=None, show_im
             logger.info('Processing frame {} ({:.2f} fps)'.format(frame_id, 1. / max(1e-5, timer.average_time)))
         # run detecting
         timer.tic()
-        blob = torch.from_numpy(img).cuda().unsqueeze(0)
+        #blob = torch.from_numpy(img).cuda().unsqueeze(0)
+        blob = torch.from_numpy(img).to(device).unsqueeze(0) ##### added
         width = img0.shape[1]
         height = img0.shape[0]
         inp_height = blob.shape[2]

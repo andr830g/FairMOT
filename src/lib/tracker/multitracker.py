@@ -173,6 +173,8 @@ class JDETracker(object):
         self.opt = opt
         if opt.gpus[0] >= 0:
             opt.device = torch.device('cuda')
+        elif opt.gpus[0] == -10:
+            opt.device = torch.device('mps') ## added
         else:
             opt.device = torch.device('cpu')
         print('Creating model...')
