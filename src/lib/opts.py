@@ -105,8 +105,14 @@ class opts(object):
     self.parser.add_argument('--val_mot16', default=False, help='val mot16 or mot15')
     self.parser.add_argument('--test_mot17', default=False, help='test mot17')
     self.parser.add_argument('--val_mot17', default=False, help='val mot17')  ### default=True ###
+    ###
+    self.parser.add_argument('--train_mot17', default=False, help='train mot17')
+    ###
     self.parser.add_argument('--val_mot20', default=False, help='val mot20')
     self.parser.add_argument('--test_mot20', default=False, help='test mot20')
+    ###
+    self.parser.add_argument('--train_mot20', default=False, help='train mot20')
+    ###
     self.parser.add_argument('--val_hie', default=False, help='val hie')
     self.parser.add_argument('--test_hie', default=False, help='test hie')
     self.parser.add_argument('--conf_thres', type=float, default=0.4, help='confidence thresh for tracking')
