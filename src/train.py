@@ -10,12 +10,12 @@ import json
 import torch
 import torch.utils.data
 from torchvision.transforms import transforms as T
-from opts import opts
-from models.model import create_model, load_model, save_model
-from models.data_parallel import DataParallel
-from logger import Logger
-from datasets.dataset_factory import get_dataset
-from trains.train_factory import train_factory
+from lib.opts import opts
+from lib.models.model import create_model, load_model, save_model
+from lib.models.data_parallel import DataParallel
+from lib.logger import Logger
+from lib.datasets.dataset_factory import get_dataset
+from lib.trains.train_factory import train_factory
 
 
 def main(opt):
@@ -36,6 +36,12 @@ def main(opt):
 
     logger = Logger(opt)
 
+    ###
+    if torch.cuda.is_available():
+        print("Device: cuda")
+    else:
+        print("Device: cpu")
+    ###
     os.environ['CUDA_VISIBLE_DEVICES'] = opt.gpus_str
     opt.device = torch.device('cuda' if opt.gpus[0] >= 0 else 'cpu')
 
