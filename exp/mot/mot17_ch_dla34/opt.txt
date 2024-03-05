@@ -1,13 +1,13 @@
 ==> torch version: 2.1.1+cu121
 ==> cudnn version: 8801
 ==> Cmd:
-['train.py', 'mot', '--exp_id', 'mot17_ch_dla34', '--load_model', '..models/crowdhuman_dla34.pth', '--data_cfg', '../src/lib/cfg/mot17.json']
+['train.py', 'mot', '--exp_id', 'mot17_ch_dla34', '--load_model', '../models/crowdhuman_dla34.pth', '--data_cfg', '../src/lib/cfg/mot17.json']
 ==> Opt:
   K: 500
   arch: dla_34
-  batch_size: 12
+  batch_size: 6
   cat_spec_wh: False
-  chunk_sizes: [6, 6]
+  chunk_sizes: [6]
   conf_thres: 0.4
   data_cfg: ../src/lib/cfg/mot17.json
   data_dir: C:/Users/Andre/OneDrive/Dokumenter/GitHub/FairMOT
@@ -19,8 +19,8 @@
   exp_dir: C:\Users\Andre\OneDrive\Dokumenter\GitHub\FairMOT\src\lib\..\..\exp\mot
   exp_id: mot17_ch_dla34
   fix_res: True
-  gpus: [2, 3]
-  gpus_str: 2, 3
+  gpus: [0]
+  gpus_str: 0
   head_conv: 256
   heads: {'hm': 1, 'wh': 4, 'id': 128, 'reg': 2}
   hide_data_time: False
@@ -33,7 +33,7 @@
   input_video: ../videos/MOT16-03.mp4
   input_w: 608
   keep_res: False
-  load_model: ..models/crowdhuman_dla34.pth
+  load_model: ../models/crowdhuman_dla34.pth
   lr: 0.0001
   lr_step: [20]
   ltrb: True

@@ -171,7 +171,10 @@ class opts(object):
     else:
       opt = self.parser.parse_args(args)
 
-    opt.gpus = [int(gpu) for gpu in opt.gpus.split(',')]
+    opt.batch_size = 6
+    opt.gpus_str = '0'  #opt.gpus
+    opt.gpus = [0]  #[int(gpu) for gpu in opt.gpus.split(',')]
+    opt.gpus = [i for i in range(len(opt.gpus))] if opt.gpus[0] >= 0 else [-1]
     opt.lr_step = [int(i) for i in opt.lr_step.split(',')]
 
     opt.fix_res = not opt.keep_res
