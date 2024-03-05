@@ -1,5 +1,5 @@
 {
-    "root":"/home/zyf/dataset",
+    "root":"C:/Users/Andre/OneDrive/Dokumenter/GitHub/FairMOT",
     "train":
     {
         "mot17":"./data/mot17.train",
