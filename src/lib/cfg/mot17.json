@@ -1,5 +1,5 @@
 {
-    "root":"C:/Users/Andre/OneDrive/Dokumenter/GitHub/FairMOT",
+    "root":"home/cv10f24/FairMOT/",
     "train":
     {
         "mot17":"./data/mot17.train"

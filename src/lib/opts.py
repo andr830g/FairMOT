@@ -107,6 +107,7 @@ class opts(object):
     self.parser.add_argument('--val_mot17', default=False, help='val mot17')  ### default=True ###
     ###
     self.parser.add_argument('--train_mot17', default=False, help='train mot17')
+    self.parser.add_argument('--testsetup_mot17', default=False, help='train mot17')
     ###
     self.parser.add_argument('--val_mot20', default=False, help='val mot20')
     self.parser.add_argument('--test_mot20', default=False, help='test mot20')
@@ -130,7 +131,7 @@ class opts(object):
     self.parser.add_argument('--data_cfg', type=str,
                              default='../src/lib/cfg/data.json',
                              help='load data from cfg')
-    self.parser.add_argument('--data_dir', type=str, default='C:/Users/Andre/OneDrive/Dokumenter/GitHub/FairMOT')  ### default='/home/zyf/dataset', default='C:/Users/Andre/OneDrive/Dokumenter/GitHub/FairMOT/src/data'
+    self.parser.add_argument('--data_dir', type=str, default='/home/cv10f24/FairMOT')  ### default='/home/zyf/dataset', default='C:/Users/Andre/OneDrive/Dokumenter/GitHub/FairMOT/src/data'
 
     # loss
     self.parser.add_argument('--mse_loss', action='store_true',

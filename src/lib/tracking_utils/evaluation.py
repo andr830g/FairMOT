@@ -110,4 +110,5 @@ class Evaluator(object):
         import pandas as pd
         writer = pd.ExcelWriter(filename)
         summary.to_excel(writer)
-        writer.save()
+        #writer.save()
+        writer.close()
