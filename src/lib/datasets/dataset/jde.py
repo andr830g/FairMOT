@@ -155,7 +155,7 @@ class LoadImagesAndLabels:  # for training
     def get_data(self, img_path, label_path):
         height = self.height
         width = self.width
-        img = cv2.imread(img_path)  # BGR
+        img = cv2.imread('../' + img_path[21:])  # BGR ######### remove redundant working directory
         if img is None:
             raise ValueError('File corrupt {}'.format(img_path))
         augment_hsv = True
@@ -184,8 +184,8 @@ class LoadImagesAndLabels:  # for training
         img, ratio, padw, padh = letterbox(img, height=height, width=width)
 
         # Load labels
-        if os.path.isfile(label_path):
-            labels0 = np.loadtxt(label_path, dtype=np.float32).reshape(-1, 6)
+        if os.path.isfile('../' + label_path[21:]):                                         ##### Remove redundant os.getwd()
+            labels0 = np.loadtxt('../' + label_path[21:], dtype=np.float32).reshape(-1, 6)
 
             # Normalized xywh to pixel xyxy format
             labels = labels0.copy()
@@ -378,7 +378,7 @@ class JointDataset(LoadImagesAndLabels):  # for training
         for ds, label_paths in self.label_files.items():
             max_index = -1
             for lp in label_paths:
-                lb = np.loadtxt(lp)
+                lb = np.loadtxt('../' + lp[21:]) ############ remove wdir that is mysteriously added
                 if len(lb) < 1:
                     continue
                 if len(lb.shape) < 2:

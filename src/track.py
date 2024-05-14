@@ -17,7 +17,7 @@ from tracking_utils import visualization as vis
 from tracking_utils.log import logger
 from tracking_utils.timer import Timer
 from tracking_utils.evaluation import Evaluator
-import datasets.dataset.jde as datasets
+import lib.datasets.dataset.jde as datasets
 
 from tracking_utils.utils import mkdir_if_missing
 from opts import opts
@@ -169,6 +169,12 @@ def main(opt, data_root='/data/MOT16/train', det_root=None, seqs=('MOT16-05',), 
 
 
 if __name__ == '__main__':
+    ###
+    if torch.cuda.is_available():
+        print("Device: cuda")
+    else:
+        print("Device: cpu")
+    ###
     os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     opt = opts().init()
 
@@ -223,7 +229,11 @@ if __name__ == '__main__':
                       MOT17-12-SDP
                       MOT17-14-SDP'''
         data_root = os.path.join(opt.data_dir, 'MOT17/images/test')
-    if opt.val_mot17:
+    ###
+    if opt.testsetup_mot17:
+        seqs_str = '''MOT17-10-SDP'''
+        data_root = os.path.join(opt.data_dir, 'MOT17/images/train')
+    if opt.train_mot17:
         seqs_str = '''MOT17-02-SDP
                       MOT17-04-SDP
                       MOT17-05-SDP
@@ -232,6 +242,7 @@ if __name__ == '__main__':
                       MOT17-11-SDP
                       MOT17-13-SDP'''
         data_root = os.path.join(opt.data_dir, 'MOT17/images/train')
+    ###
     if opt.val_mot15:
         seqs_str = '''Venice-2
                       KITTI-13
@@ -246,13 +257,17 @@ if __name__ == '__main__':
                       ETH-Pedcross2
                       TUD-Stadtmitte'''
         data_root = os.path.join(opt.data_dir, 'MOT15/images/train')
-    if opt.val_mot20:
+    #########
+    # create train-val split
+    #########
+    if opt.train_mot20:
         seqs_str = '''MOT20-01
                       MOT20-02
                       MOT20-03
                       MOT20-05
                       '''
         data_root = os.path.join(opt.data_dir, 'MOT20/images/train')
+    ###
     if opt.test_mot20:
         seqs_str = '''MOT20-04
                       MOT20-06

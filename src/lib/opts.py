@@ -104,9 +104,16 @@ class opts(object):
     self.parser.add_argument('--test_mot15', default=False, help='test mot15')
     self.parser.add_argument('--val_mot16', default=False, help='val mot16 or mot15')
     self.parser.add_argument('--test_mot17', default=False, help='test mot17')
-    self.parser.add_argument('--val_mot17', default=True, help='val mot17')
+    self.parser.add_argument('--val_mot17', default=False, help='val mot17')  ### default=True ###
+    ###
+    self.parser.add_argument('--train_mot17', default=False, help='train mot17')
+    self.parser.add_argument('--testsetup_mot17', default=False, help='train mot17')
+    ###
     self.parser.add_argument('--val_mot20', default=False, help='val mot20')
     self.parser.add_argument('--test_mot20', default=False, help='test mot20')
+    ###
+    self.parser.add_argument('--train_mot20', default=False, help='train mot20')
+    ###
     self.parser.add_argument('--val_hie', default=False, help='val hie')
     self.parser.add_argument('--test_hie', default=False, help='test hie')
     self.parser.add_argument('--conf_thres', type=float, default=0.4, help='confidence thresh for tracking')
@@ -124,7 +131,7 @@ class opts(object):
     self.parser.add_argument('--data_cfg', type=str,
                              default='../src/lib/cfg/data.json',
                              help='load data from cfg')
-    self.parser.add_argument('--data_dir', type=str, default='/home/zyf/dataset')
+    self.parser.add_argument('--data_dir', type=str, default='/home/cv10f24/FairMOT')  ### default='/home/zyf/dataset', default='C:/Users/Andre/OneDrive/Dokumenter/GitHub/FairMOT/src/data'
 
     # loss
     self.parser.add_argument('--mse_loss', action='store_true',
@@ -165,8 +172,10 @@ class opts(object):
     else:
       opt = self.parser.parse_args(args)
 
-    opt.gpus_str = opt.gpus
-    opt.gpus = [int(gpu) for gpu in opt.gpus.split(',')]
+    opt.batch_size = 6
+    opt.gpus_str = '0'  #opt.gpus
+    opt.gpus = [0]  #[int(gpu) for gpu in opt.gpus.split(',')]
+    opt.gpus = [i for i in range(len(opt.gpus))] if opt.gpus[0] >= 0 else [-1]
     opt.lr_step = [int(i) for i in opt.lr_step.split(',')]
 
     opt.fix_res = not opt.keep_res
