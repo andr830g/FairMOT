@@ -3,3 +3,6 @@ models/
 MOT17/
 MOT20/
 DCNv2/
+crowdhuman/
+*.pth
+*.jpg
