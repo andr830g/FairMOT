@@ -1,0 +1,17 @@
+2024-04-11-10-30: epoch: 44 |loss 16.064430 | hm_loss 0.613000 | wh_loss 0.890523 | off_loss 0.212084 | id_loss 13.113296 | time 68.383333 | 
+2024-04-11-11-38: epoch: 45 |loss 11.426466 | hm_loss 0.604510 | wh_loss 0.882334 | off_loss 0.211293 | id_loss 12.752125 | time 68.716667 | 
+2024-04-11-12-47: epoch: 46 |loss 8.412300 | hm_loss 0.597369 | wh_loss 0.875252 | off_loss 0.211485 | id_loss 12.421558 | time 69.050000 | 
+2024-04-11-13-56: epoch: 47 |loss 6.283637 | hm_loss 0.592073 | wh_loss 0.876512 | off_loss 0.211568 | id_loss 12.075173 | time 68.950000 | 
+2024-04-11-15-05: epoch: 48 |loss 4.805834 | hm_loss 0.590257 | wh_loss 0.873962 | off_loss 0.211194 | id_loss 11.739893 | time 68.966667 | 
+2024-04-11-16-14: epoch: 49 |loss 3.830655 | hm_loss 0.632017 | wh_loss 0.893308 | off_loss 0.212173 | id_loss 11.434599 | time 68.950000 | 
+2024-04-11-17-24: epoch: 50 |loss 3.149535 | hm_loss 0.628292 | wh_loss 0.894672 | off_loss 0.211688 | id_loss 11.143821 | time 69.016667 | 
+2024-04-11-18-33: epoch: 51 |loss 2.818816 | hm_loss 0.607824 | wh_loss 0.869935 | off_loss 0.210676 | id_loss 10.754572 | time 69.050000 | 
+2024-04-11-19-42: epoch: 52 |loss 2.768353 | hm_loss 0.600039 | wh_loss 0.859977 | off_loss 0.210841 | id_loss 10.724367 | time 68.933333 | 
+2024-04-11-20-51: epoch: 53 |loss 2.724350 | hm_loss 0.598486 | wh_loss 0.862203 | off_loss 0.210872 | id_loss 10.700062 | time 68.983333 | 
+2024-04-11-22-00: epoch: 54 |loss 2.679713 | hm_loss 0.593176 | wh_loss 0.855368 | off_loss 0.210853 | id_loss 10.676152 | time 68.850000 | 
+2024-04-11-23-09: epoch: 55 |loss 2.639742 | hm_loss 0.591614 | wh_loss 0.860539 | off_loss 0.210790 | id_loss 10.652352 | time 68.883333 | 
+2024-04-12-00-17: epoch: 56 |loss 2.599352 | hm_loss 0.587940 | wh_loss 0.850972 | off_loss 0.210293 | id_loss 10.628455 | time 68.833333 | 
+2024-04-12-01-26: epoch: 57 |loss 2.563087 | hm_loss 0.586333 | wh_loss 0.857936 | off_loss 0.210586 | id_loss 10.603258 | time 68.883333 | 
+2024-04-12-02-35: epoch: 58 |loss 2.527440 | hm_loss 0.584073 | wh_loss 0.852990 | off_loss 0.210466 | id_loss 10.579047 | time 68.833333 | 
+2024-04-12-03-44: epoch: 59 |loss 2.493173 | hm_loss 0.581842 | wh_loss 0.847768 | off_loss 0.210277 | id_loss 10.553018 | time 68.883333 | 
+2024-04-12-04-53: epoch: 60 |loss 2.462215 | hm_loss 0.580542 | wh_loss 0.850289 | off_loss 0.210569 | id_loss 10.530513 | time 68.800000 | 
